@@ -691,6 +691,23 @@ class _ToolTipWidgetState extends State<ToolTipWidget>
                           // This offset is used to make animation smoother
                           // when there is big action widget which make
                           // the tool tip to change it's position
+                          if (widget.showArrow)
+                            Positioned(
+                              left: _getArrowLeft(arrowWidth),
+                              right: _getArrowRight(arrowWidth),
+                              child: CustomPaint(
+                                painter: _Arrow(
+                                  strokeColor: widget.tooltipBackgroundColor!,
+                                  strokeWidth: 10,
+                                  paintingStyle: PaintingStyle.fill,
+                                  isUpArrow: isArrowUp,
+                                ),
+                                child: const SizedBox(
+                                  height: arrowHeight,
+                                  width: arrowWidth,
+                                ),
+                              ),
+                            ),
                           Offstage(
                             offstage: _tooltipActionSize == null,
                             child: SizedBox(
